@@ -1,0 +1,27 @@
+# ===== compile output =====
+*.exe
+*.out
+*.o
+*.obj
+*.a
+*.so
+*.dll
+*.dylib
+build/
+
+# ===== macOS =====
+*.dSYM/
+.DS_Store
+thumbs.db
+
+# ===== VS Code =====
+.vscode/
+*.code-workspace
+
+# ===== temp file =====
+*.log
+*.tmp
+
+# ===== git =====
+*.git
+*.svn
