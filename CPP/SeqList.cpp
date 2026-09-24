@@ -1,33 +1,62 @@
 #include <iostream>
-#include <cstdlib>
 #define InitSize 100
 using namespace std;
 
-typedef struct
+template <typename T>
+struct SeqList
 {
-    char *data;
+    T *data;
     int MaxSize, Length;
-} SeqList;
 
-void InitList(SeqList &L)
-{
-    L.data = (char *)malloc(InitSize * sizeof(char));
-    L.Length = 0;
-    L.MaxSize = InitSize;
-}
+    void InitList()
+    {
+        L.data = new T[InitSize];
+        Length = 0;
+        L.MaxSize = InitSize;
+    }
 
-bool ListInsert(SeqList &L, int i, int e)
-{
-    if (i < 1 || i > L.Length + 1)
-        return false;
-    if (L.Length >= L.MaxSize)
-        return false;
-    for (int j = L.Length; j >= i; j--)
-        L.data[j] = L.data[j - 1];
-    L.data[i - 1] = e;
-    L.Length++;
-    return true;
-}
+    int Length()
+    {
+        return Length;
+    }
+
+    int LocateElem(T e)
+    {
+    }
+
+    T GetElem(SeqList L, int i)
+    {
+    }
+
+    bool ListInsert(int i, T e)
+    {
+        if (i < 1 || i > Length + 1)
+            return false;
+        if (Length >= L.MaxSize)
+            return false;
+        for (int j = Length; j >= i; j--)
+            L.data[j] = L.data[j - 1];
+        L.data[i - 1] = e;
+        Length++;
+        return true;
+    }
+
+    T ListDelete(int i, T &e)
+    {
+    }
+
+    void PrintList()
+    {
+    }
+
+    bool Empty()
+    {
+    }
+
+    bool DestroyList()
+    {
+    }
+};
 
 int main()
 {
