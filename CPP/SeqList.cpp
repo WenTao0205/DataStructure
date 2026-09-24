@@ -10,9 +10,9 @@ struct SeqList
 
     void InitList()
     {
-        L.data = new T[InitSize];
+        data = new T[InitSize];
         Length = 0;
-        L.MaxSize = InitSize;
+        MaxSize = InitSize;
     }
 
     int Length()
@@ -24,7 +24,7 @@ struct SeqList
     {
     }
 
-    T GetElem(SeqList L, int i)
+    T GetElem(int i)
     {
     }
 
@@ -32,11 +32,11 @@ struct SeqList
     {
         if (i < 1 || i > Length + 1)
             return false;
-        if (Length >= L.MaxSize)
+        if (Length >= MaxSize)
             return false;
         for (int j = Length; j >= i; j--)
-            L.data[j] = L.data[j - 1];
-        L.data[i - 1] = e;
+            data[j] = data[j - 1];
+        data[i - 1] = e;
         Length++;
         return true;
     }
