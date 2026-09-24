@@ -16,10 +16,19 @@ void InitList(SeqList &L)
     L.MaxSize = InitSize;
 }
 
+bool ListInsert(SeqList &L, int i, int e)
+{
+    if (i < 1 || i > L.Length + 1)
+        return false;
+    if (L.Length >= L.MaxSize)
+        return false;
+    for (int j = L.Length; j >= i; j--)
+        L.data[j] = L.data[j - 1];
+    L.data[i - 1] = e;
+    L.Length++;
+    return true;
+}
+
 int main()
 {
-    SeqList L;
-    InitList(L);
-    L.data[0] = 'a';
-    cout << "L.data[0]: " << L.data[0] << endl;
 }
