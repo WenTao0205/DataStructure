@@ -18,9 +18,9 @@ int Length(LNode *L)
 {
     int length = 0;
     LNode *p = L;
-    while (p->next != nullptr)
+    while (p -> next != nullptr)
     {
-        p = p->next;
+        p = p -> next;
         length++;
     }
     return length;
@@ -87,8 +87,8 @@ bool ListDelete(LNode *&L, int i, char &e)
 
 void PrintList(LNode *L) 
 {
-    for(LNode *p=L->next;p!=nullptr;p=p->next)
-        cout << p->data << "——>";
+    for(LNode *p = L -> next;p != nullptr;p = p->next)
+        cout << p -> data << "——>";
     cout << "null" << endl;
 }
 
