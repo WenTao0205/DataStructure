@@ -15,6 +15,8 @@ void InitList(DNode *&L)
 
 bool ListInsert(DNode *&L, int i, char e) 
 {
+    if (i < 1)
+        return false;
     DNode *p = L;
     int j = 0;
     while(p != nullptr && j < i - 1)
@@ -28,40 +30,34 @@ bool ListInsert(DNode *&L, int i, char e)
     
     DNode *s = new DNode;
     s -> data = e;
-    if(p -> next == nullptr)
-    {
-        s -> prev = p;
-        s -> next = nullptr;
-        p -> next = s;
-        return true;
-    }
+
     s -> next = p -> next;
     s -> prev = p;
     p -> next = s;
-    s -> next -> prev = s;
+    if(s -> next)
+        s -> next -> prev = s;
     return true;
 };
 
 bool ListDelete(DNode *&L, int i, char &e)
 {
+    if(i < 1) 
+        return false;
     DNode *p = L;
     int j = 0;
     while(p != nullptr && j < i - 1) {
         p = p -> next;
         j++;
     }
-    if(p == nullptr)
+    if(p == nullptr || p -> next == nullptr)
         return false;
     
     DNode *s = p -> next;
-    if(s == nullptr)
-        return false;
-
     if(s -> next) 
         s -> next -> prev = p;
     p -> next = s -> next;
     e = s -> data;
-    free(s);
+    delete s;
     return true;
 };
 
@@ -75,6 +71,7 @@ void PrintList(DNode *L)
     }
     cout << "null" << endl;
 
+    // 逆向输出，测试prev
     DNode *q = L -> next;
     while(q -> next != nullptr)
         q = q -> next;
@@ -98,7 +95,7 @@ int main()
 
     // 测试Delete
     char e;
-    ListDelete(L, 4, e);
+    ListDelete(L, 3, e);
     PrintList(L);
     cout << e << endl;
 }

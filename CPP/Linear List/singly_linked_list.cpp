@@ -50,6 +50,8 @@ LNode *LocateElem(LNode *L, char e)
 
 bool ListInsert(LNode *&L, int i, char e) // 声明类型：*指针 &引用  表达式：*解引用 &取地址
 {
+    if (i < 1)
+        return false;
     LNode *p = L;
     int j = 0;
     while (j < i - 1 && p != nullptr)
